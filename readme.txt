@@ -1,76 +1,146 @@
-Trabalho Prático - Sistemas Operativos 2
-Ano letivo: 2025/2026
+# TP_SO2_Meta2
 
-M2 - Programa Central e Interação com o Programa Placar
+Projeto desenvolvido no âmbito da unidade curricular de **Sistemas Operativos II**.
 
-Aluno:
-Nuno Guilherme Sampaio Rebelo - 2022137005
+## 📌 Sobre o projeto
 
+Este projeto corresponde à **Meta 2** do trabalho prático de Sistemas Operativos II.
 
-Funcionalidades implementadas:
+A solução é constituída por duas aplicações principais:
 
-1. Programa Central
-- Receção do nome do named pipe através da linha de comandos
-- Criação do name pipe no formato "\\.\pipe\<nome>"
-- Suporte para múltiplos placares ligados em simultâneo
+- **Placar**
+- **Central**
 
-2. Comunicação via named pipes
-- Comunicação bidirecional em modo message
-- Criação de uma instância de pipe por placar
-- Envio e receção das estruturas:
-	- MSG_CMD
-	- MSG_ALERTA
-	- MSG_ID
+O projeto foi desenvolvido em **C/C++**, utilizando o **Microsoft Visual Studio**.
 
-3. Gestão de placares
-- Receção do pedido "ligar" (MSG_CMD tipo = 1)
-- Atribuição automática de identificadores únicos
-- Manutenção da lista de placares ligados
-- Receção do pedido "desligar" (MSG_CMD tipo = 2)
-- Remoção do placar da plataforma
+## 🧩 Componentes
 
-4. Comando "alerta"
-- Envio de MSG_ALERTA para um placar específico
-- Suporte para envio global (id = 0)
-- Receção da confirmação do placar
-- Atualização do estado do alerta ativo
+### Placar
 
-5. Comando "cancelar"
-- Envio de MSG_CMD (tipo = 5)
-- Receção da confirmação do placar
-- Remoção do alerta ativo do placar
+Projeto localizado em:
 
-6. Comando "listar"
-- Apresentação dos placares ligados
-- Apresentação do alerta ativo de cada placar
-- Indicação de placares sem alertas ativos
+```text
+placar/placar.vcxproj
+```
 
-7. Comando "encerrar"
-- Envio de MSG_CMD (tipo = 6) para todos os placares
-- Encerramento controlado da plataforma
+Representa a aplicação **Placar**.
 
-8. Alterações ao programa Placar
-- Envio do pedido "ligar" ao central
-- Receção do identificador atribuído
-- Envio do pedido "desligar"
-- Receção da confirmação do central
-- Envio de MSG_CMD (tipo = 3) após terminar a duração do alerta
-- Receção de MSG_ALERTA (tipo = 4)
-- Confirmação da receção do alerta
-- Receção de MSG_CMD (tipo = 5) para cancelamento
-- Confirmação do cancelamento
-- Receção de MSG_CMD (tipo = 6) para encerramento da plataforma
+### Central
 
-9. Gestão de alertas
-- Apenas um alerta ativo por placar
-- Substituição automática do alerta anterior
-- Temporização dos alertas com waitable timer
-- Apresentação da mensagem "---" após o fim do alerta
+Projeto localizado em:
 
-10. Concorrência e sincronização
-- Utilização de múltiplas threads:
-  - interação com utilizador
-  - comunicação com placares
-  - temporização de alertas
-- Utilização de CRITICAL_SECTION para sincronização
-- Comunicação assíncrona entre central e placares
+```text
+central/central.vcxproj
+```
+
+Representa a aplicação **Central**.
+
+### Utils
+
+A solução contém ainda o ficheiro:
+
+```text
+utils.h
+```
+
+destinado a funcionalidades ou definições partilhadas entre os diferentes componentes do projeto.
+
+## 🛠️ Tecnologias
+
+- C / C++
+- Microsoft Visual Studio
+- Visual C++ (`.vcxproj`)
+- Windows
+
+## 💻 Configurações suportadas
+
+A solução possui as seguintes configurações:
+
+- Debug x64
+- Debug x86
+- Release x64
+- Release x86
+
+## 📁 Estrutura do projeto
+
+```text
+TP_SO2_Meta2/
+│
+├── TP_SO2_Meta2.sln
+├── utils.h
+│
+├── placar/
+│   └── placar.vcxproj
+│
+└── central/
+    └── central.vcxproj
+```
+
+## 🚀 Como executar
+
+### 1. Clonar o repositório
+
+```bash
+git clone <URL_DO_REPOSITORIO>
+```
+
+### 2. Abrir a solução
+
+Abrir o ficheiro:
+
+```text
+TP_SO2_Meta2.sln
+```
+
+no **Microsoft Visual Studio**.
+
+### 3. Escolher a configuração
+
+Selecionar uma das configurações disponíveis, por exemplo:
+
+```text
+Debug | x64
+```
+
+ou:
+
+```text
+Release | x64
+```
+
+Também estão disponíveis configurações para **x86**.
+
+### 4. Compilar a solução
+
+No Visual Studio:
+
+```text
+Build → Build Solution
+```
+
+### 5. Executar os projetos
+
+Após a compilação, executar os projetos necessários através do **Visual Studio**.
+
+Os dois projetos presentes na solução são:
+
+```text
+placar
+central
+```
+
+## 📋 Requisitos
+
+- Microsoft Visual Studio
+- Compilador C/C++ compatível
+- Windows
+
+## 👤 Autor
+
+**Nuno Rebelo**
+
+## 🎓 Contexto académico
+
+Projeto realizado no âmbito da unidade curricular de **Sistemas Operativos II**.
+
+Este repositório corresponde à **Meta 2** do trabalho prático.
